@@ -1,0 +1,101 @@
+{% load static %}
+
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #001D24;">
+    <a class="navbar-brand" target="_blank"  href="https://www.mmorpg.com/">
+        <img src="{% static 'board/img/logo_mmorpg.svg' %}" alt="Logo" width="120" height="30" class="d-inline-block align-text-top">
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">Доска объявлений <span class="sr-only">(current)</span></a>
+            </li>
+            {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'board:post_create' %}">Создать объявление</a>
+                </li>
+            {% endif %}
+        </ul>
+
+        <div class="text-end">
+            {% if user.is_authenticated %}
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li>
+                        <a href="{% url 'account_logout' %}" class="nav-link px-2 text">
+                            <button type="button" class="btn btn-outline-info btn-sm">
+                                Выйти
+                            </button>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" type="button" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <button type="button" class="btn btn-outline-info btn-sm" disabled>
+                                {{ user.username }}
+                            </button>
+                        </a>
+
+                        {#                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">#}
+                        <div class="dropdown-menu align-baseline" aria-labelledby="navbarDropdown">
+                            <div class="d-grid gap-2">
+{#                                <a class="dropdown-item"  href="{% url 'board:author_posts' user.pk %}">Мои объявления</a>#}
+
+                                <a class="btn btn-outline-info btn-md" href="{% url 'board:author_posts' user.pk %}">
+                                    &nbsp;&nbsp;Мои объявления
+                                </a>
+                                <a class="btn btn-outline-info btn-md" href="{% url 'board:show_replies'%}">
+{#                                    <button type="button" class="btn btn-outline-info btn-sm" disabled>#}
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        Отклики &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+{#                                    </button>#}
+                                </a>
+
+{#                                <a class="dropdown-item" href="#">Отклики</a>#}
+                                <div class="dropdown-divider "></div>
+                                <a class="btn btn-outline-info btn-md" href="{% url 'account_logout' %}">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    Выйти  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="" class="nav-link px-2 text">
+                            <button class="btn btn-outline-warning btn-sm" disabled>
+                                {{ time_now| date:'d-M-Y H:i' }}
+                            </button>
+                        </a>
+                    </li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                </ul>
+
+            {% else %}
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li>
+                        <a href="" class="nav-link px-2 text">
+                            <button class="btn btn-outline-warning btn-sm" disabled>
+                                {{ time_now| date:'d-M-Y H:i' }}
+                            </button>
+                        </a>
+                    </li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                    <li>
+                    <a href="{% url 'account_login' %}" class="nav-link px-2">
+                        <button type="button" class="btn btn-outline-primary btn-sm me-2">
+                            Войти
+                        </button>
+                    </a>
+                </li>
+                    <li>
+                        <a href="{% url 'account_signup' %}" class="nav-link px-2">
+                            <button type="button" class="btn btn-outline-primary btn-sm me-2">
+                                Регистрация
+                            </button>
+                        </a>
+                    </li>
+                </ul>
+            {% endif %}
+        </div>
+    </div>
+</nav>

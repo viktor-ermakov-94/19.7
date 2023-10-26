@@ -1,0 +1,21 @@
+{% extends 'layout/default.html' %}
+
+
+{% block title %}
+Редактирование объявления
+{% endblock title %}
+
+{% block content %}
+<h3>Редактирование объявления</h3>
+
+<form method="POST">
+ {% csrf_token %}
+ {{ form.media }}
+ {{ form.as_p }}
+   <input class="btn btn-success my-button" type="submit" value="Изменить">
+</form>
+
+<hr>
+<a href="{% url 'board:posts' %}" class="btn btn-primary">Вернуться на главную страницу</a>
+
+{% endblock content %}

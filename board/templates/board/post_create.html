@@ -1,0 +1,19 @@
+{% extends 'layout/default.html' %}
+
+
+{% block title %}
+Создание статьи
+{% endblock title %}
+
+{% block content %}
+
+<h3>Добавление объявления</h3>
+
+<form method="POST">
+ {% csrf_token %}
+ {{ form.media }}
+ {{ form.as_p }}
+   <input class="btn btn-success my-button" type="submit" value="Добавить">
+</form>
+
+{% endblock content %}

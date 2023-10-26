@@ -1,0 +1,30 @@
+{% extends 'layout/default.html' %}
+
+{#{% load custom_filters %}#}
+
+{% block title %}
+    Новость: {{ post.title }}
+{% endblock title %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-header">
+            <h3>{{ post.title }}</h3>
+            <div>
+                Автор: <span class="badge bg-info">{{ post.author }}</span>
+                Категория: <span class="badge bg-info">{{ post.get_category_display }}</span>
+                {#        Категории: <span class="badge bg-info">{{ post.postCategory.name }}</span>#}
+                {#        Категории: <span class="badge bg-info">{{ post.postCategory.all }}</span>#}
+{#                Категории:#}
+{#                <span class="badge bg-info">#}
+{#                    {% for k in  post.postCategory.all %}#}
+{#                        {{ k }},#}
+{#                    {% endfor %}#}
+{#                </span>#}
+            </div>
+        </div>
+        <div class="card-body">{{ post.text }}</div>
+    </div>
+    <a href="{% url 'board:posts' %}" class="btn btn-primary my-3">В начало</a>
+
+{% endblock content %}

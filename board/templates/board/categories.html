@@ -1,0 +1,43 @@
+{% extends 'layout/default.html' %}
+
+{% load custom_filters %}
+
+{% block title %}
+    Категории новостей
+{% endblock title %}
+
+{% block content %}
+    <h1 align="center">Категории новостей и статей:</h1>
+
+    <div class="d-flex justify-content-center flex-wrap">
+
+        {% for category in categories %}
+
+            <div class="w-30 p-2 col-sm-4" style="width: 300px">
+                <div class="card">
+                    <div class="card-body">
+                        <a href="{% url 'news:category_detail' category.pk %}" class="btn btn-primary btn-lg">{{ category.name }}</a>
+                        {% if user in category.subscribers.filter %}
+                            <button type="button" class="btn btn-info btn-sm" disabled>Вы подписаны</button>
+                        {% endif %}
+
+                        <br><br>
+                        <p class="card-text"> Статей: {{ category.post_set.count }}</p>
+                        <p class="card-text"> Подписчиков: {{ category.subscribers.count }}</p>
+                        <a href="{% url 'news:category_detail' category.pk %}" class="btn btn-info">Статьи</a>
+
+                        {% if user not in category.subscribers.filter %}
+                            <a href="{% url 'news:subscribe' category.pk %}" class="btn btn-primary btn-sm">Подписаться</a>
+                        {% else %}
+                            <a href="{% url 'news:unsubscribe' category.pk %}" class="btn btn-secondary btn-sm">Отписаться</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+{% endblock content %}
+

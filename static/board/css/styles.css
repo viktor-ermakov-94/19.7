@@ -1,0 +1,59 @@
+/*----- For table -----*/
+.blue_tr {
+  /*background-color: blue;*/
+  background-color: #4c4f8a;
+}
+.white_tr {
+  background-color: white;
+}
+
+/*----- For button "Add", "Edit", "Delete" -----*/
+.my-button {
+  margin-top: 1rem !important;
+  margin-bottom: 1rem !important;
+}
+
+/*!*----- For footer -------*!*/
+/** {*/
+/*  margin: 0;*/
+/*  padding: 0;*/
+/*}*/
+
+/*html,*/
+/*body {*/
+/*  height: 100%;*/
+/*}*/
+
+/*.wrapper {*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*  height: 100%;*/
+/*}*/
+
+/*.content {*/
+/*  flex: 1 0 auto;*/
+/*  margin-top: 130px;*/
+/*}*/
+
+/*.footer {*/
+/*  flex: 0 0 auto;*/
+/*}*/
+
+/*------ For header -----------*/
+
+/*.my_header {*/
+/*  height: 150px;*/
+/*  position: fixed;*/
+/*  top: 0;*/
+/*  width:1000px;*/
+/*  z-index:1000;*/
+/*}*/
+
+/*.pusto*/
+/*{*/
+/*height:160px;*/
+/*}*/
+
+
+
+

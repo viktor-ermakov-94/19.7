@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Объявления за последнюю неделю MMORPG</title>
+</head>
+<body>
+<h2>Добрый день, друг!</h2>
+<p>Список новых объявлений за последнюю неделю:</p>
+<ul>
+    {% for post in posts %}
+        <li>
+            <a href="http://127.0.0.1:8000{{ post.get_absolute_url }}">
+                {{ post.title }} (Автор: {{ post.author }})
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+</body>
+</html>

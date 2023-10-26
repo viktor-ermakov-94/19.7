@@ -1,0 +1,38 @@
+{% extends 'layout/default.html' %}
+
+{% block title %}
+    Отклики
+{% endblock title %}
+
+{% block content %}
+
+    <form method="GET">
+        {{ filter.form }}
+        <input class="btn btn-primary" type="submit" value="Найти">
+    </form>
+
+    {% for r in filter.qs %}
+
+        {% if r.post.author == user %}
+            <div>
+                <hr>
+                {{ r }}
+                <br>
+                {% if not r.accepted %}
+                    <span class="text-danger">Отклик не обработан!</span>
+                    <a href="{% url 'board:accept_reply' r.id %}" class="btn btn-outline-info btn-sm">
+                        Принять
+                    </a>
+                {% else %}
+                    <span class="text-success">Принято!</span>
+                {% endif %}
+                <a href="{% url 'board:delete_reply' r.id %}" class="btn btn-outline-danger btn-sm">
+                    Удалить
+                </a>
+                <hr>
+            </div>
+        {% endif %}
+
+    {% endfor %}
+
+{% endblock content %}
