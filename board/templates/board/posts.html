@@ -16,24 +16,19 @@
             (на странице: {{ posts|length }})</u></i>
         </p>
     {% else %}
-        {#        <h2 align="center" >Объявления:</h2>#}
         <p align="center"><i><u> Всего объявлений: {{ posts_count }}
             (на странице: {{ posts|length }})</u></i>
         </p>
-        {#        <h5 align="right" >{{ time_now| date:'d-M-Y H:i' }}</h5>#}
-{#        <h5 align="right" class="btn btn-outline-info btn-sm">{{ time_now| date:'d-M-Y H:i' }}</h5>#}
         <hr>
     {% endif %}
 
     {% if posts %}
         <table class="table">
             {% for post in posts %}
-                {#                <div class="p-1 w-auto {% cycle 'blue_tr' 'white_tr' %}">#}
                 <div class="p-3 w-auto blue_tr %}">
                     <div class="card">
                         <div class="card-header">
                             Категория:
-                            {#                            <a href="{% url 'board:category_detail' post.category %}" class="btn btn-outline-primary btn-sm">#}
                             <a href="{% url 'board:category_detail' post.get_category_display post.category %}" class="btn btn-outline-primary btn-sm">
                                 {{ post.get_category_display }}
                             </a>&nbsp;&nbsp;&nbsp; Автор:
@@ -68,61 +63,6 @@
 
 {% endblock content %}
 
-
-{#=========================================#}
-{#                        <img class="card-img-top" src="/static/ckeditor/ckeditor/129228.jpg" width="360" alt="Card image cap">#}
-{#=========================================#}
-{#=========================================#}
-{#=========================================#}
-{#    <!--    {% if category %}-->#}
-{#        <!--        {% if user not in category.subscribers.filter %}-->#}
-{#            <!--            <a href="{% url 'news:subscribe' category.pk %}" class="btn btn-primary">Подписаться</a>-->#}
-{#            <!--        {% else %}-->#}
-{#            <!--            <a href="{% url 'news:unsubscribe' category.pk %}" class="btn btn-secondary btn-sm">Отписаться</a>-->#}
-{#            <!--        {% endif %}-->#}
-{##}
-{#        <!--        <h1 align="center" >Новости и статьи категории `{{ category.name }}`:</h1>-->#}
-{##}
-{#        <!--        <h5 align="center"><i><u> Всего новостей и статей: {{ category.post_set.count }}-->#}
-{#        <!--            (на странице: {{ posts|length }})</u></i>-->#}
-{#        <!--        </h5>-->#}
-{#        <!--    {% else %}-->#}
-{#            <!--    {% endif %}-->#}
-{#=======================================#}
-{#                        <img class="card-img-top" src="/media/uploads/129228.jpg" alt="Card image cap">#}
-{#                                {% autoescape off %}#}
-{#                                    {{ post.content|truncatechars:50 }}#}
-{#                                    {{ post.content }}#}
-{#                                {% endautoescape %}#}
-{#=======================================#}
-{#                <tr class="{% cycle 'blue_tr' 'white_tr' %}">#}
-{#                    <td>#}
-{#                        <a href="{% url 'board:post_detail' post.pk %}">#}
-{#                            {{ post.title|truncatewords:8|truncatechars:50 }}#}
-{#                        </a>#}
-{#                    </td>#}
-{#                    <td>{{ post.dateCreation| date:'d-M-Y H:i' }}</td>#}
-{#                    <td>#}
-{#                        {% autoescape off %}#}
-{#                            {{ post.content|truncatechars:50 }}#}
-{#                            {{ post.content }}#}
-{#                        {% endautoescape %}#}
-{#                    </td>#}
-{#                    <td>#}
-{#                        <!--                        <a href="{% url 'board:post_update' post.pk %}">Редактирование</a>-->#}
-{#                        <!--                        <a href="{% url 'board:post_delete' post.pk %}">Удалить</a>-->#}
-{#                    </td>#}
-{#                </tr>#}
-
-{#                <div class="{% cycle 'blue_tr' 'white_tr' %}">#}
-{#                <div class="p-2 {% cycle 'blue_tr' 'white_tr' %}">#}
-{#=======================================#}
-{#            <tr>#}
-{#                <th scope="col"> Название</th>#}
-{#                <th scope="col"><p align="justify"> Дата публикации</p></th>#}
-{#                <th scope="col">Содержимое</th>#}
-{#                <th scope="col">Действия</th>#}
-{#            </tr>#}
 
 {#=======================================#}
 {#=======================================#}

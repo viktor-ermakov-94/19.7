@@ -1,0 +1,9 @@
+SECRET_KEY = 'django-SECRET_KEY..'
+
+EMAIL_HOST_USER = 'user_email'
+EMAIL_HOST_PASSWORD = 'password_email'
+
+DEFAULT_FROM_EMAIL = 'user_email@localost.ru'
+SERVER_EMAIL = 'user_email@localost.ru'
+ADMIN_EMAIL = 'user_email@localost.ru'
+

@@ -31,7 +31,6 @@ if DEBUG:
     SECRET_KEY = 'django-insecure-fh6...'
     ALLOWED_HOSTS = ['*', ]
     # ALLOWED_HOSTS = ['127.0.0.1', '192.168.0.3']
-
 else:
     SECRET_KEY = config('SECRET_KEY')
     ALLOWED_HOSTS = ['127.0.0.1', '192.168.0.3']
@@ -195,9 +194,8 @@ ADMINS = [
     ('Marat', config('ADMIN_EMAIL')),
 ]
 
-# if DEBUG:     # Для эмуляции отправки почты
-#     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+if DEBUG:     # Для эмуляции отправки почты
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 APSCHEDULER_DATETIME_FORMAT = "N j, Y, f:s a"
 APSCHEDULER_RUN_NOW_TIMEOUT = 25  # Seconds

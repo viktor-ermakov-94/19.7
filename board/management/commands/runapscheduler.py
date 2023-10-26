@@ -1,6 +1,5 @@
 import datetime
 import logging
-
 from django.conf import settings
 
 from apscheduler.schedulers.blocking import BlockingScheduler
@@ -20,7 +19,7 @@ logger = logging.getLogger(__name__)
 def sending_weekly_news():
     start_date = datetime.date.today() - timedelta(days=6)
     users = User.objects.all()
-    posts = Post.objects.filter(date_c__gte=start_date)
+    posts = Post.objects.filter(dateCreation__gte=start_date)
     email_list = [user.email for user in users]
     news_list = ''
 
@@ -28,7 +27,7 @@ def sending_weekly_news():
         news_list += f'{post.title} http://127.0.0.1:8000/{post.id}\n'
 
     send_mail(
-        subject=f'MMORPG - news for the week',
+        subject=f'MMORPG - Список новых объявлений за последнюю неделю:',
         message=f'Добрый день, уважаемый пользователь портала MMORPG!\n'
                 f'Вот новые объявления за последнюю неделю:\n'
                 f'{news_list}',
@@ -37,9 +36,8 @@ def sending_weekly_news():
     )
 
 
-# функция которая будет удалять неактуальные задачи
+# функция, которая будет удалять неактуальные задачи
 def delete_old_job_executions(max_age=604_800):
-    """This job deletes all apscheduler job executions older than `max_age` from the database."""
     DjangoJobExecution.objects.delete_old_job_executions(max_age)
 
 
