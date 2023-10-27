@@ -13,18 +13,13 @@
 {% block content %}
     <h1 align="center">{{ post.title }}</h1>
 
-    <div class="card-header">
-        Категория:
-        <a href="" class="btn btn-outline-primary btn-sm"> {{ post.get_category_display }}</a>
-        &nbsp;&nbsp; Автор:
-        <a href="" class="btn btn-outline-primary btn-sm"> {{ post.author }}</a>
-        &nbsp;&nbsp;&nbsp; Создан: {{ post.dateCreation }} &nbsp; Изменен: {{ post.dateUpdate }}
-    </div>
+    {#<!--  ===== Card Header =====-->#}
+    {% include './parts/card_header.html' %}
+    {#<!--  ===== End Card Header =====-->#}
 
-    {#    <hr>#}
     <p>{{ post.content|safe }}</p>
 
-    {#    ===========================#}
+{#    ===========================#}
     {% if user == post.author %}
         <a href="{% url 'board:post_update' post.id %}" class="btn btn-primary">Редактировать</a>
         <a href="{% url 'board:post_delete' post.id %}" class="btn btn-primary">Удалить</a>
@@ -32,7 +27,7 @@
         <form method="POST">
             {% csrf_token %}
             <div class="card card-footer align-content-center">
-{#                {{ form.as_p }}#}
+                {#                {{ form.as_p }}#}
                 {{ form.as_table }}
                 <input type="submit" value="Отправить отклик" class="btn btn-primary">
             </div>
@@ -42,6 +37,6 @@
     <hr>
     <a href="{% url 'board:posts' %}" class="btn btn-primary">Вернуться на главную страницу</a>
 
-    {#    ===========================#}
+{#    ===========================#}
 
 {% endblock content %}

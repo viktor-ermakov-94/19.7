@@ -1,0 +1,12 @@
+{% load static %}
+
+<div class="card-header">
+    Категория:
+    <a href="{% url 'board:category_detail' post.get_category_display post.category %}" class="btn btn-outline-primary btn-sm">
+        {{ post.get_category_display }}
+    </a>&nbsp;&nbsp;&nbsp; Автор:
+    <a href="{% url 'board:author_posts' post.author.pk %}" class="btn btn-outline-primary btn-sm"> {{ post.author }}</a>
+    &nbsp;&nbsp;&nbsp; Создан: {{ post.dateCreation }} &nbsp; Изменен: {{ post.dateUpdate }}
+
+</div>
+
