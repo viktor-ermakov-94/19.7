@@ -45,8 +45,8 @@
                                     &nbsp;&nbsp;Мои объявления
                                 </a>
                                 <a class="btn btn-outline-info btn-md" href="{% url 'board:show_replies'%}">
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        Отклики &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    Отклики &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 </a>
 
                                 <div class="dropdown-divider "></div>
@@ -56,7 +56,7 @@
                                 </a>
                             </div>
                         </div>
-                    </li>
+                    </li>&nbsp;&nbsp;&nbsp;&nbsp;
                     <li>
                         <a href="" class="nav-link px-2 text">
                             <button class="btn btn-outline-warning btn-sm" disabled>
@@ -70,25 +70,28 @@
             {% else %}
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li>
-                        <a href="" class="nav-link px-2 text">
-                            <button class="btn btn-outline-warning btn-sm" disabled>
-                                {{ time_now| date:'d-M-Y H:i' }}
+                        <a href="{% url 'account_login' %}" class="nav-link px-2">
+                            <button type="button" class="btn btn-outline-primary btn-sm me-2">
+                                Войти
                             </button>
                         </a>
-                    </li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                    <li>
-                    <a href="{% url 'account_login' %}" class="nav-link px-2">
-                        <button type="button" class="btn btn-outline-primary btn-sm me-2">
-                            Войти
-                        </button>
-                    </a>
-                </li>
+                    </li>
                     <li>
                         <a href="{% url 'account_signup' %}" class="nav-link px-2">
                             <button type="button" class="btn btn-outline-primary btn-sm me-2">
                                 Регистрация
                             </button>
                         </a>
-                    </li>
+                    </li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <li>
+                        <a href="" class="nav-link px-2 text">
+                            <button class="btn btn-outline-warning btn-sm" disabled>
+                                {{ time_now| date:'d-M-Y H:i' }}
+                            </button>
+                        </a>
+                    </li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
                 </ul>
             {% endif %}
         </div>
